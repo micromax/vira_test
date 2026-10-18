@@ -1,0 +1,7 @@
+build/
+bin/
+*.exe
+*.o
+out.c
+.vir/
+.vira/

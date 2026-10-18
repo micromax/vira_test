@@ -1,0 +1,59 @@
+module vira_test
+
+fn test_vec2_operations() {
+	v1 := Vec2.new(3.0, 4.0)
+	v2 := Vec2.new(1.0, 2.0)
+
+	sum := v1.add(v2)
+	if sum.x != 4.0 || sum.y != 6.0 {
+		panic('Vec2.add failed')
+	}
+
+	diff := v1.sub(v2)
+	if diff.x != 2.0 || diff.y != 2.0 {
+		panic('Vec2.sub failed')
+	}
+
+	scaled := v2.scale(3.0)
+	if scaled.x != 3.0 || scaled.y != 6.0 {
+		panic('Vec2.scale failed')
+	}
+
+	dp := v1.dot(v2)
+	if dp != 11.0 {
+		panic('Vec2.dot failed')
+	}
+
+	println('✓ test_vec2_operations passed')
+}
+
+fn test_mathx_helpers() {
+	if clamp(5, 0, 10) != 5 {
+		panic('clamp inside failed')
+	}
+	if clamp(-3, 0, 10) != 0 {
+		panic('clamp below failed')
+	}
+	if clamp(15, 0, 10) != 10 {
+		panic('clamp above failed')
+	}
+
+	if min_int(10, 20) != 10 {
+		panic('min_int failed')
+	}
+	if max_int(10, 20) != 20 {
+		panic('max_int failed')
+	}
+
+	println('✓ test_mathx_helpers passed')
+}
+
+fn test_logger() {
+	mut log := Logger.new('TestTag')
+	log.info('Running pkg tests')
+	log.ok('All checks operational')
+	if log.counter != 2 {
+		panic('logger counter mismatch')
+	}
+	println('✓ test_logger passed')
+}
